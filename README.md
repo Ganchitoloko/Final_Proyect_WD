@@ -84,11 +84,13 @@ Additional (Future) Features:
 
 Architecture Diagram
 
-![Architecture Overview](images/HLA.png)
+<img width="1034" alt="HLA" src="https://github.com/user-attachments/assets/60fdc54f-7ef6-4e33-8019-e638dae9a12e" />
+
 
 Firestore ERD
 
-![Firestore ERD](images/EDR%20.png)
+<img width="916" alt="EDR " src="https://github.com/user-attachments/assets/d3025e8f-d283-401b-a00e-cc8e6bfe3092" />
+
 
 For the UI design I will use this design as inspiration:
 https://dribbble.com/shots/25726436-Safety-Level-5
