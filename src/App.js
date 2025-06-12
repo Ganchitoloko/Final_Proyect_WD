@@ -3,6 +3,12 @@ import LoginForm from "./components/LoginForm";
 import ReportForm from "./components/ReportForm";
 import ReportList from "./components/ReportList";
 import TranslateDemo from "./components/TranslateDemo";
+import QuizComponent from "./components/QuizComponent";
+import QuizResults from "./components/QuizResults";
+import Quiz from "./components/Quiz";
+
+
+
 
 function App() {
   return (
@@ -13,6 +19,9 @@ function App() {
       <ReportList />
          <h1>SiteBuddy Translate Test</h1>
       <TranslateDemo />
+      <Quiz />
+      <QuizComponent />
+      <QuizResults />
     </div>
   );
 }

@@ -13,15 +13,15 @@ const ReportForm = () => {
 
     try {
       const fakeImageURL = "https://placehold.co/400x300?text=Hazard+Image";
-      
+
       await addDoc(collection(db, "hazards"), {
         title,
         description,
         imageURL: fakeImageURL,
-        createdAt: Timestamp.now(),
+        createdAt: Timestamp.now()
       });
 
-      alert("Hazard reported successfully!");
+      alert("Hazard reported (image simulated).");
       setTitle("");
       setDescription("");
     } catch (error) {
@@ -57,3 +57,4 @@ const ReportForm = () => {
 };
 
 export default ReportForm;
+

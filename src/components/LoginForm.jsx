@@ -1,4 +1,3 @@
-// src/components/LoginForm.jsx
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
@@ -24,9 +23,9 @@ function LoginForm() {
         createdAt: new Date()
       });
 
-      alert("✅ User registered and saved in Firestore.");
+      alert(" User registered and saved in Firestore.");
     } catch (error) {
-      alert("❌ Error: " + error.message);
+      alert(" Error: " + error.message);
     }
   };
 

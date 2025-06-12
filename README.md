@@ -84,13 +84,11 @@ Additional (Future) Features:
 
 Architecture Diagram
 
-<img width="1034" alt="HLA" src="https://github.com/user-attachments/assets/6e621cd1-d9b0-42e8-9616-bafbf5da4a89" />
-
+![Architecture Overview](images/HLA.png)
 
 Firestore ERD
 
-<img width="916" alt="EDR " src="https://github.com/user-attachments/assets/ce53a30a-de83-4e13-971f-56291a6e5376" />
-
+![Firestore ERD](images/EDR%20.png)
 
 For the UI design I will use this design as inspiration:
 https://dribbble.com/shots/25726436-Safety-Level-5
@@ -188,3 +186,16 @@ Method: GET
 Authentication: Required
 
 Description: Allows users to access their past quiz scores and completion history.
+
+
+## References
+
+- [Firebase Setup](https://firebase.google.com/docs/web/setup)
+- [Firebase Auth - Email/Password](https://firebase.google.com/docs/auth/web/start)
+- [Firestore - Add Data](https://firebase.google.com/docs/firestore/manage-data/add-data)
+- [Firebase Storage - Upload Files](https://firebase.google.com/docs/storage/web/upload-files)
+- [React - Getting Started](https://reactjs.org/docs/getting-started.html)
+- [React - Components and Props](https://reactjs.org/docs/components-and-props.html)
+- [React - State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+- [W3Schools - React Intro](https://www.w3schools.com/react/react_intro.asp)
+
