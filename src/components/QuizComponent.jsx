@@ -1,4 +1,3 @@
-// src/components/QuizComponent.jsx
 import React, { useEffect, useState } from "react";
 import { getFirestore, collection, getDocs, addDoc, Timestamp } from "firebase/firestore";
 import { getAuth } from "firebase/auth";

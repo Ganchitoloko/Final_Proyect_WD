@@ -1,11 +1,9 @@
-// src/components/Quiz.jsx
 import React, { useState } from "react";
 import { getFirestore, collection, addDoc, Timestamp } from "firebase/firestore";
 import app from "../firebase/firebaseConfig";
 
 const db = getFirestore(app);
 
-// Puedes ajustar o expandir este array de preguntas
 const quizQuestions = [
   {
     question: "What does WHMIS stand for?",
@@ -50,9 +48,9 @@ const Quiz = () => {
         submittedAt: Timestamp.now(),
       });
 
-      alert("✅ Quiz submitted and saved!");
+      alert(" Quiz submitted and saved!");
     } catch (error) {
-      console.error("❌ Error saving quiz:", error);
+      console.error(" Error saving quiz:", error);
       alert("Failed to save quiz result.");
     }
   };
