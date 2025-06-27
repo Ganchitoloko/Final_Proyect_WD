@@ -1,0 +1,15 @@
+# Ignorar dependencias
+node_modules/
+dist/
+.vite/
+
+# Archivos sensibles
+.env
+.env.local
+
+# Sistema
+.DS_Store
+*.log
+
+# Producción
+build/
