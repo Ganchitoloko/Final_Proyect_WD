@@ -42,7 +42,9 @@ function DashboardPage() {
           {/* Report Card */}
           <div className="bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-yellow-500">
             <h2 className="text-xl font-semibold mb-2">📋 Report Summary</h2>
-            <p className="text-lg">You have submitted <span className="text-yellow-400 font-bold">{reportCount}</span> report(s).</p>
+            <p className="text-lg">
+              You have submitted <span className="text-yellow-400 font-bold">{reportCount}</span> report(s).
+            </p>
           </div>
 
           {/* Quiz Card */}
@@ -60,17 +62,32 @@ function DashboardPage() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col md:flex-row gap-4 justify-center">
+        {/* Action Buttons */}
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
           <button
-            onClick={() => navigate("/report")}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded font-semibold shadow"
+            onClick={() => navigate("/reports")}
+            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded font-semibold shadow"
           >
             ➕ Create New Report
           </button>
 
           <button
+            onClick={() => navigate("/report-list")}
+            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded font-semibold shadow"
+          >
+            📋 View All Reports
+          </button>
+
+          <button
+            onClick={() => navigate("/whmis-quiz")}
+            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded font-semibold shadow"
+          >
+            🧪 Take WHMIS Quiz
+          </button>
+
+          <button
             onClick={() => navigate("/my-whmis-results")}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-6 py-3 rounded font-semibold shadow"
+            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded font-semibold shadow"
           >
             📈 View My WHMIS Results
           </button>

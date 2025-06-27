@@ -1,15 +1,15 @@
-# Ignorar dependencias
+# Node modules
 node_modules/
-dist/
-.vite/
+frontend/node_modules/
+backend/node_modules/
 
-# Archivos sensibles
+# Environment
 .env
 .env.local
 
-# Sistema
-.DS_Store
-*.log
-
-# Producción
+# Build
+dist/
 build/
+
+# Log files
+*.log
