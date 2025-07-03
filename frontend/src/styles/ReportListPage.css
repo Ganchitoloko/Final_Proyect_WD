@@ -6,7 +6,7 @@ body {
 .report-container {
   max-width: 1100px;
   margin: 2rem auto;
-  background-color: #1e293b; /* Fondo azulado oscuro */
+  background-color: #1e293b; 
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -14,7 +14,7 @@ body {
 }
 
 .report-container h1 {
-  color: #facc15; /* Amarillo para el título */
+  color: #facc15; 
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -36,13 +36,13 @@ body {
 }
 
 .report-table th {
-  background-color: #1f2937; /* Cabecera más oscura */
+  background-color: #1f2937; 
   color: #facc15;
   font-weight: bold;
 }
 
 .report-table td {
-  background-color: #1e293b; /* Celdas fondo oscuro */
+  background-color: #1e293b; 
   color: #e2e8f0;
 }
 
@@ -87,7 +87,7 @@ body {
   background-color: #b91c1c;
 }
 
-/* Categoría - badges por tipo */
+
 .category-badge {
   display: inline-block;
   padding: 4px 8px;
@@ -98,25 +98,25 @@ body {
 }
 
 .category-electrical {
-  background-color: #3b82f6; /* azul */
+  background-color: #3b82f6; 
 }
 
 .category-fall {
-  background-color: #f97316; /* naranja */
+  background-color: #f97316; 
 }
 
 .category-fire {
-  background-color: #dc2626; /* rojo */
+  background-color: #dc2626; 
 }
 
 .category-chemical {
-  background-color: #6366f1; /* morado */
+  background-color: #6366f1; 
 }
 
 .category-trips {
-  background-color: #10b981; /* verde */
+  background-color: #10b981; 
 }
 
 .category-other {
-  background-color: #9ca3af; /* gris */
+  background-color: #9ca3af; 
 }

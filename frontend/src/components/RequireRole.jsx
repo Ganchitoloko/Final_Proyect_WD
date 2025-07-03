@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as jwtDecode from "jwt-decode"; // ✅ Importación correcta
+import * as jwtDecode from "jwt-decode";
 
 function RequireRole({ role, children }) {
   const [authorized, setAuthorized] = useState(false);
@@ -14,12 +14,12 @@ function RequireRole({ role, children }) {
     }
 
     try {
-      // ✅ Decodifica correctamente el token
+      
       const decoded = jwtDecode.jwtDecode(token);
       if (decoded.role === role) {
         setAuthorized(true);
       } else {
-        navigate("/login"); // Acceso denegado si el rol no coincide
+        navigate("/login"); 
       }
     } catch (err) {
       console.error("Token inválido:", err);

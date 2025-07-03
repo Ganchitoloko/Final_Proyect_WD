@@ -58,8 +58,6 @@ WHMIS quiz module + score tracking
 
 Quick safety tips by task
 
-Mobile responsive design
-
 Admin dashboard: view users and reports
 
 

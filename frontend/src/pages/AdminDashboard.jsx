@@ -80,7 +80,6 @@ function AdminDashboard() {
         <button className="logout-btn" onClick={handleLogout}>🚪 Logout</button>
       </header>
 
-      {/* Tabla de usuarios */}
       <section className="user-list-section">
         <h2>👥 Registered Users</h2>
         {users.length === 0 ? (

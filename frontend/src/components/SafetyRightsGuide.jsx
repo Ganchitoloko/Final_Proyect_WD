@@ -3,13 +3,17 @@ import axios from "axios";
 import "../styles/SafetyRightsGuide.css";
 
 
-const tips = [
-  "Always wear helmets, gloves, boots, and reflective vests when on site.",
-  "Report any unsafe conditions to your supervisor immediately.",
-  "Follow lockout/tagout procedures before servicing equipment.",
-  "Use ladders properly and ensure they are secured.",
-  "Keep your work area clean to avoid slips and trips.",
+const tips = [  
+  "You have the right to know about hazards in your workplace.",
+  "You have the right to participate in decisions affecting your health and safety.",
+  "You have the right to refuse unsafe work without fear of retaliation.",
+  "Your employer must provide proper training and supervision for your tasks.",
+  "You must be given appropriate Personal Protective Equipment (PPE) for your work.",
+  "You are entitled to report safety violations to WorkSafeBC or your local safety board.",
+  "You have the right to access first aid and report any workplace injury.",
+  "You are eligible for compensation if you are injured at work.",
 ];
+
 
 function SafetyRightsGuide() {
   const [language, setLanguage] = useState("en");
@@ -45,7 +49,7 @@ function SafetyRightsGuide() {
 
   return (
     <div className="safety-guide-container">
-      <h2 className="guide-title">Safety Rights & Tips</h2>
+      <h2 className="guide-title">Safety Rights</h2>
 
       <div className="language-selector">
         <label>Select Language: </label>
@@ -55,6 +59,7 @@ function SafetyRightsGuide() {
           <option value="pt">Portuguese</option>
           <option value="fr">French</option>
           <option value="tl">Tagalog</option>
+           <option value="hi">Hindi (Indian)</option>
         </select>
       </div>
 

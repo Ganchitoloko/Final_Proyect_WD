@@ -1,7 +1,5 @@
-// src/components/SafetyTipsCarousel.jsx
 import { useState } from "react";
-import "../styles/SafetyTipsCarousel.css"; // Asegúrate de crear este archivo CSS
-
+import "../styles/SafetyTipsCarousel.css"; 
 const tips = [
   {
     title: "Wear Proper Safety Gear",

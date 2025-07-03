@@ -1,9 +1,8 @@
-// routes/translateRoutes.js
 const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY; // asegúrate de definirlo en .env
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 
 router.post("/", async (req, res) => {
   const { text, targetLang } = req.body;

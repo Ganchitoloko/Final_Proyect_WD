@@ -2,9 +2,9 @@
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #0f172a; /* Fondo oscuro */
+  background-color: #0f172a; 
   border-radius: 16px;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); /* Sombra dorada */
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); 
   color: #f8fafc;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -12,7 +12,7 @@
 .quiz-title {
   font-size: 30px;
   font-weight: bold;
-  color: #facc15; /* Amarillo dorado */
+  color: #facc15; 
   margin-bottom: 2rem;
   text-align: center;
 }

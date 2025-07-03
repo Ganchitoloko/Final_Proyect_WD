@@ -2,10 +2,10 @@ const User = require("../models/User");
 
 const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().select("-password"); // sin contraseña
+    const users = await User.find().select("-password"); // without password
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ message: "Error al obtener los usuarios." });
+    res.status(500).json({ message: "Error retrieving users." });
   }
 };
 
@@ -14,15 +14,15 @@ const deleteUser = async (req, res) => {
     const user = await User.findById(req.params.id);
 
     if (!user) {
-      return res.status(404).json({ message: "Usuario no encontrado." });
+      return res.status(404).json({ message: "User not found." });
     }
 
-    await user.deleteOne(); // elimina el usuario
+    await user.deleteOne(); // delete user
 
-    res.json({ message: "Usuario eliminado correctamente." });
+    res.json({ message: "User successfully deleted." });
   } catch (error) {
-    console.error("Error al eliminar usuario:", error.message);
-    res.status(500).json({ message: "Error del servidor al eliminar usuario." });
+    console.error("Error deleting user:", error.message);
+    res.status(500).json({ message: "Server error while deleting user." });
   }
 };
 

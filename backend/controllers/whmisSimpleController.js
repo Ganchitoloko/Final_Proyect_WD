@@ -13,10 +13,10 @@ const saveWhmisResult = async (req, res) => {
 
     await result.save();
 
-    res.status(201).json({ message: "Resultado guardado correctamente." });
+    res.status(201).json({ message: "Result successfully saved." });
   } catch (err) {
-    console.error("Error al guardar el resultado:", err);
-    res.status(500).json({ message: "Error del servidor al guardar resultado." });
+    console.error("Error saving result:", err);
+    res.status(500).json({ message: "Server error while saving result." });
   }
 };
 
@@ -25,8 +25,8 @@ const getMyWhmisResults = async (req, res) => {
     const results = await WhmisResult.find({ user: req.user.id }).sort({ date: -1 });
     res.status(200).json(results);
   } catch (err) {
-    console.error("Error al obtener resultados:", err);
-    res.status(500).json({ message: "Error del servidor al obtener resultados." });
+    console.error("Error retrieving results:", err);
+    res.status(500).json({ message: "Server error while retrieving results." });
   }
 };
 

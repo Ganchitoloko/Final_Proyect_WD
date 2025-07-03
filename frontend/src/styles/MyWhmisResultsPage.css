@@ -2,17 +2,17 @@
   max-width: 900px;
   margin: 2rem auto;
   padding: 2rem;
-  background-color: #0e1320; /* fondo oscuro */
+  background-color: #0e1320; 
   border-radius: 16px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-  color: #e5e7eb; /* texto claro */
+  color: #e5e7eb; 
   font-family: 'Segoe UI', sans-serif;
 }
 
 .results-title {
   text-align: center;
   font-size: 28px;
-  color: #facc15; /* amarillo brillante estilo Safety Level 5 */
+  color: #facc15; 
   margin-bottom: 2rem;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .results-table th {
-  color: #facc15; /* amarillo brillante para títulos */
+  color: #facc15; 
   font-weight: bold;
 }
 
@@ -53,16 +53,16 @@
 }
 
 .correct {
-  color: #22c55e; /* verde éxito */
+  color: #22c55e;
   font-weight: bold;
 }
 
 .incorrect {
-  color: #ef4444; /* rojo error */
+  color: #ef4444; 
   font-weight: bold;
 }
 
-/* Botón de regresar o ver resultados */
+
 .view-results-btn {
   background-color: #facc15;
   color: #0f172a;

@@ -7,7 +7,7 @@ import ReportFormPage from "./pages/ReportFormPage";
 import ReportListPage from "./pages/ReportListPage";
 import WhmisQuizPage from "./pages/WhmisQuizPage";
 import MyWhmisResultsPage from "./pages/MyWhmisResultsPage";
-import EditReportPage from "./pages/EditReportPage"; // 👈 NUEVO
+import EditReportPage from "./pages/EditReportPage"; 
 import RequireRole from "./components/RequireRole";
 
 function App() {

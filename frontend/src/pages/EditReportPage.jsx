@@ -21,8 +21,8 @@ function EditReportPage() {
         setTitle(res.data.title);
         setDescription(res.data.description);
       } catch (error) {
-        console.error("Error cargando el reporte:", error);
-        alert("No se pudo cargar el reporte.");
+        console.error("Error loading report:", error);
+        alert("Failed to load the report.");
       }
     };
 
@@ -42,37 +42,37 @@ function EditReportPage() {
           },
         }
       );
-      alert("Reporte actualizado correctamente.");
+      alert("Report updated successfully.");
       navigate("/report-list");
     } catch (error) {
-      console.error("Error actualizando el reporte:", error);
-      alert("No se pudo actualizar el reporte.");
+      console.error("Error updating the report:", error);
+      alert("Failed to update the report.");
     }
   };
 
   return (
     <div className="edit-container">
       <form onSubmit={handleUpdate} className="edit-box">
-        <h2>✏️ Editar Reporte</h2>
+        <h2>✏️ Edit Report</h2>
 
-        <label>Título</label>
+        <label>Title</label>
         <input
           type="text"
-          placeholder="Título"
+          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
         />
 
-        <label>Descripción</label>
+        <label>Description</label>
         <textarea
-          placeholder="Descripción"
+          placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
         ></textarea>
 
-        <button type="submit">💾 Actualizar</button>
+        <button type="submit">💾 Update</button>
       </form>
     </div>
   );

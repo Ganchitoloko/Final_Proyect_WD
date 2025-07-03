@@ -6,13 +6,13 @@
 
 .carousel-card {
   width: 420px;
-  background-color: #1c1f2a; /* fondo oscuro azulado */
+  background-color: #1c1f2a;
   border-radius: 16px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   padding: 20px;
   text-align: center;
   color: #ffffff;
-  border: 2px solid #f7c000; /* borde amarillo */
+  border: 2px solid #f7c000; 
 }
 
 .carousel-img {
@@ -26,7 +26,7 @@
 
 .carousel-content h3 {
   font-size: 1.4rem;
-  color: #f7c000; /* Amarillo principal */
+  color: #f7c000; 
   margin-bottom: 0.5rem;
 }
 

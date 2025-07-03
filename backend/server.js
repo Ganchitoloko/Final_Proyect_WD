@@ -32,13 +32,11 @@ app.use("/api/quiz-results", quizResultRoutes);
 app.use("/api/whmis-simple", whmisSimpleRoutes);
 app.use("/api/translate", translateRoutes);
 
-
-
 app.get("/", (req, res) => {
-  res.send("Servidor funcionando correctamente.");
+  res.send("Server is running properly.");
 });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

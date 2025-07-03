@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import whmisQuestions from "../data/whmisQuestions";
 import axios from "axios";
-import "../styles/WhmisQuizPage.css"; // 👈 Asegúrate de importar esto
+import "../styles/WhmisQuizPage.css"; 
 
 function WhmisQuizPage() {
   const [answers, setAnswers] = useState(Array(whmisQuestions.length).fill(null));

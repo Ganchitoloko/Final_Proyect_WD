@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0f172a; /* fondo oscuro */
+  background-color: #0f172a;
   padding: 2rem;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -128,7 +128,7 @@
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("/report-bg.png"); /* usa /nombre desde public */
+  background-image: url("/report-bg.png"); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

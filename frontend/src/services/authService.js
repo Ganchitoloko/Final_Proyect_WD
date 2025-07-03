@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// Función para login
+// Function for login
 export const loginUser = async (credentials) => {
   try {
     const res = await axios.post("http://localhost:5000/api/auth/login", credentials);
@@ -10,7 +10,7 @@ export const loginUser = async (credentials) => {
   }
 };
 
-// Función para registro
+// Function for register
 export const registerUser = async (userData) => {
   try {
     const res = await axios.post("http://localhost:5000/api/auth/register", userData);

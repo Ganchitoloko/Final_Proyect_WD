@@ -2,25 +2,25 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Registrar usuario
+// Register user
 const registerUser = async (req, res) => {
   const { email, password, role } = req.body;
 
   try {
     const userExist = await User.findOne({ email });
-    if (userExist) return res.status(400).json({ message: "El usuario ya existe." });
+    if (userExist) return res.status(400).json({ message: "User already exists." });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({
       email,
       password: hashedPassword,
-      role: role || "worker", // Por defecto es 'worker'
+      role: role || "worker", // Default is 'worker'
     });
 
-    res.status(201).json({ message: "Usuario registrado correctamente." });
+    res.status(201).json({ message: "User successfully registered." });
   } catch (error) {
-    res.status(500).json({ message: "Error al registrar usuario.", error: error.message });
+    res.status(500).json({ message: "Error registering user.", error: error.message });
   }
 };
 
@@ -30,26 +30,26 @@ const loginUser = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: "Usuario no encontrado." });
+    if (!user) return res.status(404).json({ message: "User not found." });
 
     const passwordMatch = await bcrypt.compare(password, user.password);
-    if (!passwordMatch) return res.status(401).json({ message: "Contraseña incorrecta." });
+    if (!passwordMatch) return res.status(401).json({ message: "Incorrect password." });
 
-    // Incluir el rol en el token
+    // Include role in the token
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
-    // También lo devolvemos por separado en la respuesta (opcional)
+    // Optionally return role separately in the response
     res.json({
       token,
-      role: user.role, // 👈 Útil si el frontend quiere leerlo sin decodificar
-      message: "Login exitoso.",
+      role: user.role, // 👈 Useful if frontend wants to read it without decoding
+      message: "Login successful.",
     });
   } catch (error) {
-    res.status(500).json({ message: "Error al iniciar sesión.", error: error.message });
+    res.status(500).json({ message: "Error during login.", error: error.message });
   }
 };
 

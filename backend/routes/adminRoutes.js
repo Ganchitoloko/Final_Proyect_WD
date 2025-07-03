@@ -3,12 +3,12 @@ const { getAllUsers, deleteUser } = require("../controllers/adminController");
 const protect = require("../middleware/authMiddleware");
 const adminOnly = require("../middleware/adminMiddleware");
 
-const router = express.Router(); // Esto DEBE ir antes de usar `router`
+const router = express.Router(); 
 
-// Obtener todos los usuarios
+// Get all users
 router.get("/users", protect, adminOnly, getAllUsers);
 
-// Eliminar usuario
+// Delete user
 router.delete("/users/:id", protect, adminOnly, deleteUser);
 
 module.exports = router;
