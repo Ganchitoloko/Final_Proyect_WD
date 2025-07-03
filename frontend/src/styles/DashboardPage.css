@@ -1,0 +1,93 @@
+body {
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #1e293b;
+  border-radius: 10px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+  color: #facc15;
+  font-size: 24px;
+}
+
+.logout-button {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #b91c1c;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background-color: #334155;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #facc15;
+}
+
+.card h2 {
+  margin-bottom: 0.5rem;
+  color: #facc15;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #facc15;
+}
+
+.green {
+  color: #22c55e;
+}
+
+.red {
+  color: #ef4444;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.action-buttons button {
+  background-color: #facc15;
+  color: black;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  min-width: 180px;
+}
+
+.action-buttons button:hover {
+  background-color: #eab308;
+}

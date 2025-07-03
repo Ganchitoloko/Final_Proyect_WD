@@ -1,0 +1,69 @@
+.edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0f172a;
+  padding: 1rem;
+}
+
+.edit-box {
+  background-color: #1e293b;
+  padding: 2.5rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.15);
+  border: 1px solid #334155;
+}
+
+.edit-box h2 {
+  font-size: 24px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #facc15;
+}
+
+.edit-box label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #facc15;
+}
+
+.edit-box input,
+.edit-box textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1.2rem;
+  border-radius: 6px;
+  background-color: #0f172a;
+  border: 1px solid #475569;
+  color: white;
+  font-size: 14px;
+}
+
+.edit-box input:focus,
+.edit-box textarea:focus {
+  outline: none;
+  border-color: #facc15;
+  box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.3);
+}
+
+.edit-box button {
+  width: 100%;
+  padding: 12px;
+  background-color: #22c55e;
+  color: #0f172a;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-box button:hover {
+  background-color: #16a34a;
+}

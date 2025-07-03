@@ -1,15 +1,16 @@
-// Crear un nuevo reporte
 const Report = require("../models/Report");
 
+// Crear un nuevo reporte
 const createReport = async (req, res) => {
   try {
-    const { title, description, category } = req.body;
+    const { title, description, category, image } = req.body;
 
     const newReport = new Report({
       user: req.user.id,
       title,
       description,
       category,
+      image, // nuevo campo
     });
 
     await newReport.save();
@@ -20,11 +21,10 @@ const createReport = async (req, res) => {
   }
 };
 
-
 // Obtener los reportes del usuario logueado
 const getMyReports = async (req, res) => {
   try {
-    const reports = await Report.find({ user: req.user.id }).sort({ dateReported: -1 });
+    const reports = await Report.find({ user: req.user.id }).sort({ createdAt: -1 });
     res.status(200).json(reports);
   } catch (error) {
     console.error(error);
@@ -85,6 +85,7 @@ const updateReport = async (req, res) => {
     report.title = req.body.title || report.title;
     report.description = req.body.description || report.description;
     report.category = req.body.category || report.category;
+    report.image = req.body.image || report.image; // nuevo campo editable
 
     const updatedReport = await report.save();
 
@@ -95,8 +96,6 @@ const updateReport = async (req, res) => {
   }
 };
 
-
-
 module.exports = {
   createReport,
   getMyReports,
@@ -104,4 +103,3 @@ module.exports = {
   deleteReport, 
   updateReport,
 };
-

@@ -1,6 +1,10 @@
+// DashboardPage.jsx
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../styles/DashboardPage.css";
+import SafetyTipsCarousel from "../components/SafetyTipsCarousel";
+import SafetyRightsGuide from "../components/SafetyRightsGuide";
 
 function DashboardPage() {
   const [reportCount, setReportCount] = useState(0);
@@ -15,7 +19,6 @@ function DashboardPage() {
         const reportsRes = await axios.get("http://localhost:5000/api/reports", {
           headers: { Authorization: `Bearer ${token}` },
         });
-
         setReportCount(reportsRes.data.length);
 
         const quizRes = await axios.get("http://localhost:5000/api/quiz-results/my-results", {
@@ -26,76 +29,59 @@ function DashboardPage() {
           setLatestQuiz(quizRes.data[0]);
         }
       } catch (error) {
-        console.error("Error loading dashboard data:", error);
+        console.error("Error cargando datos del dashboard:", error);
       }
     };
 
     fetchData();
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    navigate("/login");
+  };
+
   return (
-    <div className="min-h-screen bg-gray-900 text-white py-10 px-4">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 text-yellow-400 text-center">SiteBuddy Dashboard</h1>
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1>SiteBuddy Dashboard</h1>
+        <button onClick={handleLogout} className="logout-button">Logout</button>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Report Card */}
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-yellow-500">
-            <h2 className="text-xl font-semibold mb-2">📋 Report Summary</h2>
-            <p className="text-lg">
-              You have submitted <span className="text-yellow-400 font-bold">{reportCount}</span> report(s).
-            </p>
-          </div>
-
-          {/* Quiz Card */}
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md border-l-4 border-yellow-500">
-            <h2 className="text-xl font-semibold mb-2">🧪 Last WHMIS Quiz</h2>
-            {latestQuiz ? (
-              <>
-                <p>✅ Correct: <span className="font-bold text-green-400">{latestQuiz.correct}</span></p>
-                <p>❌ Incorrect: <span className="font-bold text-red-400">{latestQuiz.incorrect}</span></p>
-                <p>📅 Date: {new Date(latestQuiz.date).toLocaleString()}</p>
-              </>
-            ) : (
-              <p>No WHMIS quiz results found.</p>
-            )}
-          </div>
+      <div className="dashboard-grid">
+        <div className="card">
+          <h2>📋 Report Summary</h2>
+          <p>
+            You have submitted <span className="highlight">{reportCount}</span> report(s).
+          </p>
         </div>
 
-        {/* Action Buttons */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
-          <button
-            onClick={() => navigate("/reports")}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded font-semibold shadow"
-          >
-            ➕ Create New Report
-          </button>
-
-          <button
-            onClick={() => navigate("/report-list")}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded font-semibold shadow"
-          >
-            📋 View All Reports
-          </button>
-
-          <button
-            onClick={() => navigate("/whmis-quiz")}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded font-semibold shadow"
-          >
-            🧪 Take WHMIS Quiz
-          </button>
-
-          <button
-            onClick={() => navigate("/my-whmis-results")}
-            className="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-3 rounded font-semibold shadow"
-          >
-            📈 View My WHMIS Results
-          </button>
+        <div className="card">
+          <h2>🧪 Last WHMIS Quiz</h2>
+          {latestQuiz ? (
+            <>
+              <p>✅ Correct: <span className="green">{latestQuiz.correct}</span></p>
+              <p>❌ Incorrect: <span className="red">{latestQuiz.incorrect}</span></p>
+              <p>📅 Date: {new Date(latestQuiz.date).toLocaleString()}</p>
+            </>
+          ) : (
+            <p>No WHMIS quiz results found.</p>
+          )}
         </div>
       </div>
+
+      <div className="action-buttons">
+        <button onClick={() => navigate("/reports")}>➕ New Report</button>
+        <button onClick={() => navigate("/report-list")}>📋 All Reports</button>
+        <button onClick={() => navigate("/whmis-quiz")}>🧪 WHMIS Quiz</button>
+      </div>
+
+      {/* ✅ Tips de Seguridad */}
+      <SafetyTipsCarousel />
+      <SafetyRightsGuide />
     </div>
   );
 }
 
 export default DashboardPage;
-

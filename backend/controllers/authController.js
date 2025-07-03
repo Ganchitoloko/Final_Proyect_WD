@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
     const newUser = await User.create({
       email,
       password: hashedPassword,
-      role: role || "worker"
+      role: role || "worker", // Por defecto es 'worker'
     });
 
     res.status(201).json({ message: "Usuario registrado correctamente." });
@@ -35,11 +35,19 @@ const loginUser = async (req, res) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) return res.status(401).json({ message: "Contraseña incorrecta." });
 
-    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
-      expiresIn: "2d"
-    });
+    // Incluir el rol en el token
+    const token = jwt.sign(
+      { id: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
 
-    res.json({ token });
+    // También lo devolvemos por separado en la respuesta (opcional)
+    res.json({
+      token,
+      role: user.role, // 👈 Útil si el frontend quiere leerlo sin decodificar
+      message: "Login exitoso.",
+    });
   } catch (error) {
     res.status(500).json({ message: "Error al iniciar sesión.", error: error.message });
   }

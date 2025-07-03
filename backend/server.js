@@ -10,6 +10,7 @@ const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const quizResultRoutes = require("./routes/quizResultRoutes");
 const whmisSimpleRoutes = require("./routes/whmisSimpleRoutes");
+const translateRoutes = require("./routes/translateRoutes");
 
 connectDB();
 
@@ -29,6 +30,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/quiz-results", quizResultRoutes);
 app.use("/api/whmis-simple", whmisSimpleRoutes);
+app.use("/api/translate", translateRoutes);
 
 
 

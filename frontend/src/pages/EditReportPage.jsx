@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import "../styles/EditReportPage.css"; // crea este archivo para los estilos
 
 function EditReportPage() {
   const { id } = useParams();
@@ -42,7 +43,7 @@ function EditReportPage() {
         }
       );
       alert("Reporte actualizado correctamente.");
-      navigate("/reports");
+      navigate("/report-list");
     } catch (error) {
       console.error("Error actualizando el reporte:", error);
       alert("No se pudo actualizar el reporte.");
@@ -50,33 +51,28 @@ function EditReportPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <form onSubmit={handleUpdate} className="bg-white p-6 rounded shadow-md w-80">
-        <h2 className="text-2xl font-bold mb-4">Editar Reporte</h2>
+    <div className="edit-container">
+      <form onSubmit={handleUpdate} className="edit-box">
+        <h2>✏️ Editar Reporte</h2>
 
+        <label>Título</label>
         <input
           type="text"
           placeholder="Título"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-          className="border w-full p-2 mb-4 rounded"
         />
 
+        <label>Descripción</label>
         <textarea
           placeholder="Descripción"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           required
-          className="border w-full p-2 mb-4 rounded"
         ></textarea>
 
-        <button
-          type="submit"
-          className="bg-green-600 text-white px-4 py-2 rounded w-full hover:bg-green-700"
-        >
-          Actualizar Reporte
-        </button>
+        <button type="submit">💾 Actualizar</button>
       </form>
     </div>
   );

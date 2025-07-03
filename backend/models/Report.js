@@ -12,16 +12,17 @@ const reportSchema = new mongoose.Schema({
   },
   description: String,
   category: {
-  type: String,
-  enum: ["Electrical", "Fall Risk", "Fire Hazard", "Chemical", "Slips & Trips", "Other"],
-  default: "Other"
-},
+    type: String,
+    enum: ["Electrical", "Fall Risk", "Fire Hazard", "Chemical", "Slips & Trips", "Other"],
+    default: "Other"
+  },
+  image: {
+    type: String // URL de la imagen subida a Cloudinary
+  },
   createdAt: {
-  type: Date,
-  default: Date.now
-}
-
-  
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model("Report", reportSchema);

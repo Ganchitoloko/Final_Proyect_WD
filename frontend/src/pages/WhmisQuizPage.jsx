@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import whmisQuestions from "../data/whmisQuestions";
 import axios from "axios";
+import "../styles/WhmisQuizPage.css"; // 👈 Asegúrate de importar esto
 
 function WhmisQuizPage() {
   const [answers, setAnswers] = useState(Array(whmisQuestions.length).fill(null));
   const [submitted, setSubmitted] = useState(false);
   const [result, setResult] = useState(null);
-  const navigate = useNavigate(); // <-- necesario para redirección
+  const navigate = useNavigate();
 
   const handleChange = (questionIndex, optionIndex) => {
     const newAnswers = [...answers];
@@ -27,16 +28,8 @@ function WhmisQuizPage() {
     try {
       await axios.post(
         "http://localhost:5000/api/quiz-results/submit",
-        {
-          total,
-          correct,
-          incorrect
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
+        { total, correct, incorrect },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
       setResult({ total, correct, incorrect });
       setSubmitted(true);
@@ -47,52 +40,64 @@ function WhmisQuizPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow mt-6">
-      <h1 className="text-2xl font-bold mb-6">WHMIS Quiz</h1>
+    <div className="quiz-container">
+      <h1 className="quiz-title">WHMIS Quiz</h1>
 
-      {/* ✅ Botón para ir al historial */}
-      <button
-        onClick={() => navigate("/my-whmis-results")}
-        className="bg-green-600 text-white px-3 py-2 rounded mb-4 hover:bg-green-700"
-      >
+      <button className="view-results-btn" onClick={() => navigate("/my-whmis-results")}>
         View My Results
       </button>
 
-      {whmisQuestions.map((q, i) => (
-        <div key={i} className="mb-6">
-          <p className="font-medium">{i + 1}. {q.question}</p>
-          <div className="space-y-2 mt-2">
-            {q.options.map((option, j) => (
-              <label key={j} className="block">
-                <input
-                  type="radio"
-                  name={`question-${i}`}
-                  value={j}
-                  checked={answers[i] === j}
-                  onChange={() => handleChange(i, j)}
-                  className="mr-2"
-                />
-                {option}
-              </label>
-            ))}
-          </div>
-        </div>
-      ))}
+      {whmisQuestions.map((q, i) => {
+  const isCorrect = submitted && answers[i] === q.correctAnswer;
+  const isIncorrect = submitted && answers[i] !== q.correctAnswer;
+
+  return (
+    <div
+      key={i}
+      className={`quiz-question ${isCorrect ? "correct-answer" : ""} ${isIncorrect ? "incorrect-answer" : ""}`}
+    >
+      <p className="question-text">{i + 1}. {q.question}</p>
+      <div className="options-list">
+        {q.options.map((option, j) => {
+          const isUserAnswer = answers[i] === j;
+          const isRightAnswer = q.correctAnswer === j;
+
+          return (
+            <label
+              key={j}
+              className={`option-item ${
+                submitted && isRightAnswer ? "highlight-correct-option" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name={`question-${i}`}
+                value={j}
+                checked={isUserAnswer}
+                onChange={() => handleChange(i, j)}
+                disabled={submitted}
+              />
+              {option}
+            </label>
+          );
+        })}
+      </div>
+    </div>
+  );
+})}
+
 
       {!submitted ? (
-        <button
-          onClick={handleSubmit}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
+        <button className="submit-btn" onClick={handleSubmit}>
           Submit Quiz
         </button>
       ) : (
-        <div className="mt-4">
-          <h2 className="text-lg font-semibold">Results:</h2>
-          <p>Total Questions: {result.total}</p>
-          <p>Correct: {result.correct}</p>
-          <p>Incorrect: {result.incorrect}</p>
-        </div>
+        <div className="result-box">
+  <h2>Results:</h2>
+  <p>Total Questions: {result.total}</p>
+  <p className="result-correct">✅ Correct: {result.correct}</p>
+  <p className="result-incorrect">❌ Incorrect: {result.incorrect}</p>
+</div>
       )}
     </div>
   );

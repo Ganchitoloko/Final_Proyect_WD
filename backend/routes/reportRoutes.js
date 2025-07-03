@@ -7,7 +7,7 @@ const {
   updateReport
 } = require("../controllers/reportController");
 
-const protect = require("../middleware/authMiddleware"); // asegúrate de que esto es correcto
+const protect = require("../middleware/authMiddleware"); 
 
 const router = express.Router();
 
