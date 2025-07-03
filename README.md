@@ -1,13 +1,14 @@
 **SiteBuddy: Smart Safety for Construction Workers**
 
 1. Project Title:  SiteBuddy: Smart Safety for Construction Workers
+
 2. Problem Statement:
+
 In the construction industry, especially among labours working part-time or on contracts, safety is often compromised due to a lack of access to timely information, language barriers, or poor communication of workplace risks. Hazards may appear unexpectedly, and workers are often unaware of proper procedures, their legal rights, or certified safety training such as WHMIS (Workplace Hazardous Materials Information System). This leads to preventable injuries, low morale, and limited opportunities for professional growth.
 
 SiteBuddy addresses these issues by creating a digital space that educates, empowers, and protects workers on the field, offering tools for real-time incident reporting, safety guidance, and long-term development.
 
  
-
 3. Overview of the Application’s Functionality:
 
 SiteBuddy is a web application designed to improve jobsite safety for construction labours, starting with those in Vancouver. The app provides a multilingual, mobile-friendly platform for workers to access essential safety resources based on common tasks (e.g., working at heights, handling machinery, lifting loads). A core feature is the "Report a Hazard" tool that lets users quickly submit risk alerts with descriptions and photos, anonymously if desired.
@@ -18,69 +19,70 @@ The app promotes empowerment through education, with a section that outlines lab
 
 With SiteBuddy, construction workers will feel more informed, protected, and connected to resources that enhance both their safety and their career path.
 
- 
 
 4. Technology Stack:
 
 Frontend:
+Vite + React.js + CSS
 
-- React.js (UI and components)
-- React Router (navigation)
-- TailwindCSS (styling and responsiveness)
+React Router for navigation
 
+Responsive layout
 
 Backend:
+Node.js + Express
 
-- Firebase (authentication, real-time database)
-- Cloud Firestore (storage and scalability)
+MongoDB (Mongoose) for all collections
+
+JWT-based user authentication
+
+Cloudinary for image upload
+
+Google Translate API for dynamic multilingual support
+
+Deployment & Tools:
+Firebase Hosting
+
+GitHub (version control)
+
+Postman for API testing
 
 
-Additional Tools:
+5. Core Features (Implemented):
 
-- GitHub (version control)
+Submit hazard reports with optional photo
 
-- Canva or Figma (UI prototyping)
+View multilingual safety rights
 
-- Google Translate API (for multilingual support)
+WHMIS quiz module + score tracking
 
+Quick safety tips by task
 
-5. Features to be Implemented:
+Mobile responsive design
 
-Core Features:
-
-- Quick safety tips by task type (visual + text)
-
-- Hazard Reporting Tool with optional photo upload
-
-- Multilingual safety rights guide
-
-- WHMIS summary module + basic quiz
-
-- Mobile-responsive design
+Admin dashboard: view users and reports
 
 
 Additional (Future) Features:
 
-- Safety knowledge tracker (badges/certifications)
+Safety knowledge tracker (badges/certifications)
 
-- Interactive incident map (to view/report danger zones)
+Peer-shared safety forum
 
-- Forum for workers to share advice and experiences
+Interactive incident map
 
-- Integration with local training & safety programs
+Integration with local training programs
 
 
 6. User Stories:
 
-- As a construction labourer, I want to quickly report a hazard I see on site so that others stay safe and my voice is heard.
+As a laborer, I want to report hazards quickly.
 
-- As a new immigrant worker, I want to read safety instructions and rights in my language so I can understand and protect myself.
+As an immigrant worker, I want safety instructions in my language.
 
-- As a supervisor, I want to view safety reports from my team so that I can take timely actions and reduce risks.
+As a supervisor, I want to view reports from my team.
 
-- As a worker, I want to complete WHMIS quizzes and save my progress so that I can show it to future employers.
-
-- As a curious user, I want to learn about safety best practices depending on my task so that I can avoid common mistakes.
+As a learner, I want to take quizzes to improve my knowledge.
 
 Architecture Diagram
 
@@ -96,108 +98,136 @@ For the UI design I will use this design as inspiration:
 https://dribbble.com/shots/25726436-Safety-Level-5
 
 
-**Firestore – Main Collections** 
+MongoDB - Main Collections
 
-1. users
-Stores user profiles, including name, email, role (worker/supervisor), preferred language, and registration date.
+*  users
 
-2. hazard_reports
-Contains reports submitted by users or anonymous visitors. Each report includes a description, photo URL, location, timestamp, and anonymity flag.
+ Stores user profiles, including name, email, password (hashed), role (worker/supervisor), preferred
 
-3. whmis_quizzes
-Holds WHMIS-related quiz data, such as questions, answer options, and correct answers.
+language, and registration date.
 
-4. quiz_results
-Saves each user's quiz submissions, including quiz ID, score, and the date it was taken.
+*  reports
 
-5. safety_tips
-Provides multilingual safety advice categorized by task (e.g., working at heights, lifting loads, etc.).
+ Contains reports submitted by users or anonymous visitors. Each report includes a title, description, photo
 
-**CRUD Operations Create** :
+URL, location, timestamp, and anonymity flag.
 
-A user submits a hazard report using the "Report a Hazard" tool.
+*  quiz_results
 
-Admins or editors can add new safety tips or quizzes.
+ Saves each user's WHMIS quiz submissions, including score, number of correct/incorrect answers, and the
+
+date it was taken.
+
+*  safety_tips
+
+ Provides multilingual safety advice categorized by task (e.g., working at heights, lifting loads, etc.).
+
+CRUD Operations
+
+Create:
+
+- A user submits a hazard report using the 'Report a Hazard' tool.
+
+- Admins or editors can add new safety tips.
 
 Read:
 
-Users can read safety tips by task.
+- Users can read safety tips by task.
 
-Users can view their quiz results.
+- Users can view their quiz results.
 
-Any visitor can access legal rights translated into multiple languages.
+- Any visitor can access translated legal rights.
 
 Update:
 
-A user can update their language preference or profile data.
+- A user can update their profile or language preference.
 
-Admins can edit safety tips or quiz content.
+- Admins can update safety tips content.
 
 Delete:
 
-Admins can remove outdated or duplicate hazard reports.
+- Admins can remove outdated hazard reports.
 
-A user may request deletion of their quiz history (optional feature).
+- A user may request deletion of their quiz history (optional).
 
-**API Contract (Simulated for Firebase SDK)**
+API Contract (Custom Node.js + Express)
 
-1. Submit Hazard Report
+*  Submit Hazard Report
 
-Method: POST
+ Method: POST
 
-Authentication: Optional (anonymous or logged-in user)
+ Authentication: Optional (anonymous or logged-in)
 
-Description: Allows users to submit a safety hazard with a description, photo, and location.
+ Description: Submit a safety hazard with description, photo, and location.
 
-2. View Safety Tips
+*  View Safety Tips
+
+ Method: GET
+
+ Authentication: Not required
+
+ Description: Retrieve safety tips based on specific tasks.
+
+*  Access Worker Rights Guide
+
+ Method: GET
+
+ Authentication: Not required
+
+ Description: Return a list of labor rights translated into the user's preferred language.
+
+*  Fetch WHMIS Quizzes
+
+ Method: GET
+
+ Authentication: Not required
+
+ Description: Get WHMIS quiz questions and options for self-study.
+
+*  Submit Quiz Answers
+
+ Method: POST
+
+ Authentication: Required
+
+ Description: Store user's quiz responses and calculate score.
+
+*  View Quiz Results
 
 Method: GET
 
-Authentication: Not required
+ Authentication: Required
 
-Description: Retrieves safety tips based on specific tasks (e.g., working at heights).
-
-3. Access Worker Rights Guide
-
-Method: GET
-
-Authentication: Not required
-
-Description: Returns a list of labor rights translated into the user's preferred language.
-
-4. Fetch WHMIS Quizzes
-
-Method: GET
-
-Authentication: Not required
-
-Description: Provides a list of available WHMIS quizzes for self-study.
-
-5. Submit Quiz Answers
-
-Method: POST
-
-Authentication: Required
-
-Description: Stores the user's quiz responses and calculates their score.
-
-6. View Quiz Results
-
-Method: GET
-
-Authentication: Required
-
-Description: Allows users to access their past quiz scores and completion history.
+ Description: Retrieve user's past quiz scores and attempt history
 
 
 ## References
 
-- [Firebase Setup](https://firebase.google.com/docs/web/setup)
-- [Firebase Auth - Email/Password](https://firebase.google.com/docs/auth/web/start)
-- [Firestore - Add Data](https://firebase.google.com/docs/firestore/manage-data/add-data)
-- [Firebase Storage - Upload Files](https://firebase.google.com/docs/storage/web/upload-files)
-- [React - Getting Started](https://reactjs.org/docs/getting-started.html)
-- [React - Components and Props](https://reactjs.org/docs/components-and-props.html)
-- [React - State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
-- [W3Schools - React Intro](https://www.w3schools.com/react/react_intro.asp)
+- [Node.js Official Docs](https://nodejs.org/en/docs)
+
+- [Express.js Guide – Express Documentation](https://expressjs.com/en/starter/installing.html)
+
+- [MongoDB Mongoose Docs](https://mongoosejs.com/docs/guide.html)
+
+- [JWT Authentication with Node.js](https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs)
+
+- [Cloudinary Docs – Image Upload API](https://cloudinary.com/documentation/image_upload_api_reference)
+
+- [Google Cloud Translation API](https://cloud.google.com/translate/docs)
+
+- [Vite – Official Documentation](https://vitejs.dev/guide/)
+
+- [React.js – Official Docs](https://react.dev/learn)
+
+- [React Router – Navigation in React](https://reactrouter.com/en/main/start/tutorial)
+
+- [CSS Tricks – Responsive Design](https://css-tricks.com/snippets/css/media-queries-for-standard-devices/)
+
+- [MDN Web Docs – JavaScript Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+
+- [Postman – API Testing Tool](https://learning.postman.com/docs/getting-started/introduction/)
+
+- [GitHub Docs – Working with Repositories](https://docs.github.com/en/repositories)
+
+
 

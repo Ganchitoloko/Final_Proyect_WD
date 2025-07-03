@@ -91,3 +91,23 @@ body {
 .action-buttons button:hover {
   background-color: #eab308;
 }
+
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+.dashboard-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/dashboard.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  opacity: 1; /* si quieres puedes usar 0.8 para semitransparente */
+}

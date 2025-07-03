@@ -18,7 +18,7 @@ function ReportListPage() {
         });
         setReports(res.data);
       } catch (err) {
-        console.error("Error al obtener los reportes:", err);
+        console.error("Error fetching reports:", err);
       }
     };
 
@@ -30,7 +30,7 @@ function ReportListPage() {
   };
 
   const handleDelete = async (id) => {
-    const confirm = window.confirm("¿Estás seguro de que quieres eliminar este reporte?");
+    const confirm = window.confirm("Are you sure you want to delete this report?");
     if (!confirm) return;
 
     const token = localStorage.getItem("token");
@@ -42,27 +42,30 @@ function ReportListPage() {
       });
       setReports(reports.filter((report) => report._id !== id));
     } catch (err) {
-      console.error("Error al eliminar el reporte:", err);
-      alert("No se pudo eliminar el reporte.");
+      console.error("Error deleting report:", err);
+      alert("Failed to delete the report.");
     }
   };
 
   return (
     <div className="report-container">
-      <h1 style={{ fontSize: "20px", marginBottom: "1rem" }}>Mis Reportes</h1>
+      <h1 style={{ fontSize: "20px", marginBottom: "1rem" }}>My Reports</h1>
+      <button className="back-dashboard-btn" onClick={() => navigate("/dashboard")}>
+        ⬅️ Back to Dashboard
+      </button>
 
       {reports.length === 0 ? (
-        <p>No hay reportes creados aún.</p>
+        <p>No reports created yet.</p>
       ) : (
         <table className="report-table">
           <thead>
             <tr>
-              <th>Fecha</th>
-              <th>Imagen</th>
-              <th>Título</th>
-              <th>Descripción</th>
-              <th>Categoría</th>
-              <th>Acciones</th>
+              <th>Date</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -71,23 +74,23 @@ function ReportListPage() {
                 <td>
                   {report.createdAt
                     ? new Date(report.createdAt).toLocaleString()
-                    : "Fecha no disponible"}
+                    : "Unavailable"}
                 </td>
                 <td>
                   {report.image ? (
                     <button
                       onClick={() => window.open(report.image, "_blank")}
                       style={{ border: "none", background: "none", cursor: "pointer" }}
-                      title="Haz clic para ver la imagen en grande"
+                      title="Click to view full image"
                     >
                       <img
                         src={report.image}
-                        alt="Reporte"
+                        alt="Report"
                         className="report-img"
                       />
                     </button>
                   ) : (
-                    <span style={{ color: "#999", fontStyle: "italic" }}>Sin imagen</span>
+                    <span style={{ color: "#999", fontStyle: "italic" }}>No image</span>
                   )}
                 </td>
                 <td>{report.title}</td>
@@ -114,13 +117,13 @@ function ReportListPage() {
                     onClick={() => handleEdit(report._id)}
                     className="button button-edit"
                   >
-                    Editar
+                    Edit
                   </button>
                   <button
                     onClick={() => handleDelete(report._id)}
                     className="button button-delete"
                   >
-                    Eliminar
+                    Delete
                   </button>
                 </td>
               </tr>

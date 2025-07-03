@@ -3,10 +3,11 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #0f172a;
+  background-color: rgba(15, 23, 42, 0.5); /* semitransparente */
   padding: 1rem;
   color: white;
 }
+
 
 .auth-box {
   background-color: #1e293b;
@@ -81,3 +82,23 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/login.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+

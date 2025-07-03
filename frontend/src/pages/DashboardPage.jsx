@@ -1,4 +1,3 @@
-// DashboardPage.jsx
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -43,6 +42,7 @@ function DashboardPage() {
   };
 
   return (
+     <div className="dashboard-page admin-container">
     <div className="dashboard-container">
       <div className="dashboard-header">
         <h1>SiteBuddy Dashboard</h1>
@@ -76,11 +76,10 @@ function DashboardPage() {
         <button onClick={() => navigate("/report-list")}>📋 All Reports</button>
         <button onClick={() => navigate("/whmis-quiz")}>🧪 WHMIS Quiz</button>
       </div>
-
-      {/* ✅ Tips de Seguridad */}
       <SafetyTipsCarousel />
       <SafetyRightsGuide />
     </div>
+  </div>
   );
 }
 

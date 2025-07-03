@@ -96,10 +96,27 @@ const updateReport = async (req, res) => {
   }
 };
 
+// Obtener todos los reportes (solo admin)
+const getAllReportsForAdmin = async (req, res) => {
+  try {
+    if (req.user.role !== "admin") {
+      return res.status(403).json({ message: "No autorizado." });
+    }
+
+    const reports = await Report.find().populate("user", "email role").sort({ createdAt: -1 });
+
+    res.status(200).json(reports);
+  } catch (error) {
+    console.error("Error al obtener reportes para admin:", error.message);
+    res.status(500).json({ message: "Error al obtener los reportes." });
+  }
+};
+
 module.exports = {
   createReport,
   getMyReports,
   getReportById,
   deleteReport, 
   updateReport,
+  getAllReportsForAdmin,
 };

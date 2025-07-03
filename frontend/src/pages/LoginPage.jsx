@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import * as jwtDecode from "jwt-decode"; // ✅ Import correcto
+import * as jwtDecode from "jwt-decode";
 
 import "../styles/AuthForm.css";
 
@@ -21,14 +21,12 @@ function LoginPage() {
       const token = res.data.token;
       localStorage.setItem("token", token);
 
-      // ✅ Decodificar token correctamente
       const decoded = jwtDecode.jwtDecode(token);
       const role = decoded.role;
-      localStorage.setItem("role", role); // Guarda el rol si lo necesitas más adelante
+      localStorage.setItem("role", role); 
 
       alert("Login successful!");
 
-      // ✅ Redirigir según el rol
       if (role === "admin") {
         navigate("/admin-dashboard");
       } else {
@@ -41,6 +39,7 @@ function LoginPage() {
   };
 
   return (
+     <div className="login-page">
     <div className="auth-container">
       <div className="auth-box">
         <h1>👷 SiteBuddy Login</h1>
@@ -68,6 +67,7 @@ function LoginPage() {
           </span>
         </p>
       </div>
+    </div>
     </div>
   );
 }
