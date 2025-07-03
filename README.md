@@ -86,10 +86,10 @@ As a learner, I want to take quizzes to improve my knowledge.
 
 Architecture Diagram
 
-<img width="1034" alt="HLA" src="https://github.com/user-attachments/assets/60fdc54f-7ef6-4e33-8019-e638dae9a12e" />
+<img width="941" alt="HLA" src="https://github.com/user-attachments/assets/f31af95b-a3e6-4f7f-ae27-000b088209bf" />
 
 
-Firestore ERD
+Mongo ERD
 
 <img width="916" alt="EDR " src="https://github.com/user-attachments/assets/d3025e8f-d283-401b-a00e-cc8e6bfe3092" />
 
